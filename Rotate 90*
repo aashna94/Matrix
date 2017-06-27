@@ -1,0 +1,67 @@
+//
+//  main.cpp
+//  hmm
+//
+//  Created by aashna on 28/06/17.
+//  Copyright © 2017 q. All rights reserved.
+//
+
+#include <iostream>
+#include <vector>
+#include <queue>
+#include <stack>
+#include <string>
+#include <climits>
+#include <stdio.h>
+#include <string.h>
+#include <cassert>
+#include <algorithm>
+#include <stack>
+#include <map>
+#include <list>
+#include <set>
+#include <math.h>
+
+using namespace std;
+
+#define  n 3
+
+void rotateMatrix(int a[n][n])
+{
+    int x,y,temp;
+    for (x=0; x<n/2; x++)
+    {
+        for (y=x; y<n-x-1; y++)
+        {
+            temp=a[x][y];
+            a[x][y]=a[y][n-x-1];
+            a[y][n-x-1]=a[n-x-1][n-y-1];
+            a[n-x-1][n-y-1]=a[n-y-1][x];
+            a[n-y-1][x]=temp;
+        }
+    }
+}
+
+int main(int argc, const char * argv[])
+{
+    int i,j;
+
+    int a[n][n];
+    for (i=0; i<n ; i++)
+    {
+        for (j=0; j<n ; j++)
+        {
+            cin>>a[i][j];
+        }
+    }
+    rotateMatrix(a);
+    for (i=0; i<n ; i++)
+    {
+        for (j=0; j<n ; j++)
+        {
+            cout<<a[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+    return 0;
+}
